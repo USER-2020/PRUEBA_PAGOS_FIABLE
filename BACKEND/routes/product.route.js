@@ -14,15 +14,21 @@ router.get('/products', async (req, res) => {
     }
 });
 
-// Ruta para crear un nuevo producto
 router.post('/products', async (req, res) => {
     try {
-        const newProduct = new Product(req.body); // Crear una nueva instancia de Product con los datos recibidos en el cuerpo de la solicitud
-        await newProduct.save(); // Guardar el nuevo producto en la base de datos
-        res.status(201).json(newProduct); // Enviar el nuevo producto como respuesta
+        const { stock, unit_price, brand, name } = req.body;
+        if (!stock || !unit_price || !brand || !name) {
+            // console.log(stock, unit_price, brand, name);
+            return res.status(400).json({ error: 'Todos los campos son requeridos' });
+        }
+
+        const newProduct = new Product(req.body);
+        await newProduct.save();
+        res.status(201).json(newProduct);
     } catch (error) {
-        res.status(500).json({ error: 'Error al crear producto' });
+        res.status(500).json({ error: error.message });
     }
 });
+
 
 export default router;
