@@ -52,11 +52,12 @@ export const createSpecialPriceUser = async (req, res) => {
 
         });
 
+        specialPriceUser.user_associate.product_special_price.push(specialPriceUser._id);
         await specialPriceUser.save();
-
-        // Actualizar el campo de relación especial de precio de usuario en el usuario
-        user.product_special_price.push(specialPriceUser._id);
         await user.save();
+        
+        // Actualizar el campo de relación especial de precio de usuario en el usuario
+        // user.product_special_price.push(specialPriceUser._id);
 
 
         res.status(201).json({ message: "Relación creada exitosamente" });
