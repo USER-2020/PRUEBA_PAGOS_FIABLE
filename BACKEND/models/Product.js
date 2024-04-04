@@ -4,7 +4,6 @@ const productSchema = new Schema({
     stock: {
         type: Number,
         required: true,
-        default: 10,
     },
     unit_price: {
         type: Number,
@@ -22,6 +21,6 @@ const productSchema = new Schema({
         required: true,
         unique: true,
     }
-});
+}, { versionKey: false });
 
-export const Product = model("products", productSchema);
+export const Product = model("product", productSchema);
