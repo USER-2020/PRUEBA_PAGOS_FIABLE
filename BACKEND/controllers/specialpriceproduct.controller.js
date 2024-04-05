@@ -4,7 +4,6 @@ import { User } from "../models/User.js";
 
 export const getAlllSpecialPriceUser = async (req, res) => {
     const { user_id, nombre_producto } = req.params;
-    console.log(req.params);
     try {
         const specialPriceUser = await SpecialPriceUser.find();
         res.json(specialPriceUser);
@@ -55,7 +54,7 @@ export const createSpecialPriceUser = async (req, res) => {
         specialPriceUser.user_associate.product_special_price.push(specialPriceUser._id);
         await specialPriceUser.save();
         await user.save();
-        
+
         // Actualizar el campo de relación especial de precio de usuario en el usuario
         // user.product_special_price.push(specialPriceUser._id);
 
@@ -66,3 +65,34 @@ export const createSpecialPriceUser = async (req, res) => {
         res.status(409).json({ error: "Error al crear la relación" });
     }
 };
+
+export const deleteSpecialPriceUser = async (req, res) => {
+    const { special_relation_id } = req.params;
+    console.log(req.params);
+    try {
+        // Encuentra la relación especial de precio de usuario por su ID
+        const specialPriceUser = await SpecialPriceUser.findByIdAndDelete(special_relation_id);
+
+        if (!specialPriceUser) {
+            return res.status(404).json({ error: "Relación especial de precio de usuario no encontrada" });
+        }
+
+        // Encuentra el usuario asociado a la relación
+        const user = await User.findById(specialPriceUser.user_associate);
+
+        if (!user) {
+            return res.status(404).json({ error: "Usuario no encontrado" });
+        }
+
+        // Elimina la referencia de la relación en el usuario
+        user.product_special_price.pull(specialPriceUser._id);
+        await user.save();
+
+        res.status(200).json({ message: "Relación especial de precio de usuario eliminada exitosamente" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Error al eliminar la relación especial de precio de usuario" });
+    }
+};
+
+

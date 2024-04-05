@@ -4,8 +4,10 @@ import "./configDB/connectDB.js"
 import productRouter from './routes/product.route.js';
 import userRouter from './routes/user.route.js';
 import specialPriceProductUserRouter from './routes/specialpriceproduct.route.js';
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use('/api/v1', productRouter);
 app.use('/api/v1', userRouter);
