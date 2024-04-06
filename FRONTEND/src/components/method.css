@@ -1,0 +1,37 @@
+.method {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bigContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.get {
+    border: 1px solid green;
+}
+
+.get h2 {
+    color: green;
+
+}
+
+.post{
+    border: 1px solid orange;
+}
+
+.post h2{
+    color: orange;
+}
+
+.delete{
+    border: 1px solid red;
+}
+
+.delete h2{
+    color: red;
+}

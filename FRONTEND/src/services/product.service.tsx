@@ -7,3 +7,10 @@ export const getAllProducts = () =>
             'Content-Type': 'application/json',
         }
     });
+
+export const addProducts = (newProduct) =>
+    axios.post(`${urlBase}/products`, newProduct, {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });

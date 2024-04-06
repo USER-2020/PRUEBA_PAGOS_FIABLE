@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { getAllProducts } from '../services/product.service';
+import JsonView from '@uiw/react-json-view';
 
-const Request = ({requestBody}) => {
+const Request = ({ requestBody }) => {
   useEffect(() => {
     console.log(requestBody);
   }, []);
   return (
-    <div>
-      Tipo de request example
-    </div>
+    <>
+      <h6>Request body:</h6>
+      <div className='card' style={{ height: '100px', overflowY: 'scroll', borderRadius: 32 }}>
+        <JsonView value={requestBody} />
+      </div>
+    </>
   )
 }
 

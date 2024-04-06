@@ -6,4 +6,11 @@ export const getAllUsers = () =>
         headers: {
             'Content-Type': 'application/json',
         }
-    })
+    });
+
+export const addUsers = (newUser) =>
+    axios.post(`${urlBase}/users`, newUser, {
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    });
