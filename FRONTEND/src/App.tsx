@@ -187,7 +187,7 @@ function App() {
       <h2>Try it now!</h2>
 
       <div className="input-group mb-3">
-        <span className="input-group-text" id="basic-addon3">http://localhost:5000/api/v1</span>
+        <span className="input-group-text" id="basic-addon3">https://vercel-backend-ery29jnib-user-2020.vercel.app/api/v1</span>
         <input type="text" className="form-control" id="basic-url" aria-describedby="basic-addon3" value={uri} onChange={(e) => setUri(e.target.value)} />
         <button className="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Peticiones</button>
         <ul className="dropdown-menu dropdown-menu-end">

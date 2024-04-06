@@ -1,1 +1,1 @@
-export const urlBase = 'http://localhost:5000/api/v1';
+export const urlBase = 'https://vercel-backend-ery29jnib-user-2020.vercel.app/api/v1';
