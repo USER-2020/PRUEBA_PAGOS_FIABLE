@@ -1,1 +1,1 @@
-export const urlBase = 'https://vercel-backend-ery29jnib-user-2020.vercel.app/api/v1';
+export const urlBase = 'https://apiprueba.controlsoftwarepro.com/api/v1';
