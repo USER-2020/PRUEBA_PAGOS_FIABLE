@@ -1,6 +1,6 @@
 import JsonView from '@uiw/react-json-view'
-import React from 'react'
 
+// @ts-ignore
 const Response = ({ responseBody }) => {
     return (
         <>

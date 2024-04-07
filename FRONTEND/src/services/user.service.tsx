@@ -8,6 +8,7 @@ export const getAllUsers = () =>
         }
     });
 
+// @ts-ignore
 export const addUsers = (newUser) =>
     axios.post(`${urlBase}/users`, newUser, {
         headers: {

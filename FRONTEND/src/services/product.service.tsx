@@ -8,6 +8,7 @@ export const getAllProducts = () =>
         }
     });
 
+// @ts-ignore
 export const addProducts = (newProduct) =>
     axios.post(`${urlBase}/products`, newProduct, {
         headers: {

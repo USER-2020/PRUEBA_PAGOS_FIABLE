@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { getAllProducts } from '../services/product.service';
 import JsonView from '@uiw/react-json-view';
 
+// @ts-ignore
 const Request = ({ requestBody }) => {
   useEffect(() => {
     console.log(requestBody);
