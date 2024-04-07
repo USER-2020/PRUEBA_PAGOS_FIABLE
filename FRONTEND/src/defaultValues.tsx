@@ -1,1 +1,1 @@
-export const urlBase = 'https://apiprueba.controlsoftwarepro.com/api/v1';
+export const urlBase = 'http://localhost:5000/api/v1';

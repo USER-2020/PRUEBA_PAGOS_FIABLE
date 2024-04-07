@@ -9,7 +9,7 @@ import Methods from './components/methods';
 
 function App() {
   const [showRequest, setShowRequest] = useState(false);
-  const [showResponse, setShowResponse] = useState(true);
+  const [showResponse] = useState(true);
   const [products, setProducts] = useState({});
   const [users, setUsers] = useState({});
   const [specialPrices, setUSpecialPrices] = useState({});
@@ -35,7 +35,8 @@ function App() {
           name: `Product ${Math.ceil(Math.random() * 30)}`
         }
 
-        const isDuplicate = exisitngProducts.some(productExist => productExist.name === newProduct.name);
+        const isDuplicate = exisitngProducts.some((productExist: { name: string }) => productExist.name === newProduct.name);
+
 
         if (!isDuplicate) {
           addProducts(newProduct)
@@ -60,7 +61,7 @@ function App() {
           name: `User_${Math.ceil(Math.random() * 30)}`
         }
 
-        const isDuplicate = existingUser.some(userExist => userExist.name === newUser.name);
+        const isDuplicate = existingUser.some((userExist: { name: string }) => userExist.name === newUser.name);
 
         if (!isDuplicate) {
           addUsers(newUser).then((res) => {
@@ -74,7 +75,7 @@ function App() {
       }).catch((error) => console.log(error));
   }
 
-  function calculateRandom(object) {
+  function calculateRandom(object: Record<string, any>) {
     // Obtener la longitud del objeto `users`
     const length = Object.keys(object).length;
 
@@ -102,10 +103,14 @@ function App() {
     const randomIndexProduct = calculateRandom(products);
 
     const requestBodySpecial = {
+      // @ts-ignore
       user_id: users[randomIndexUser]._id,
-      product_name: products[randomIndexProduct].name,
+      // @ts-ignore
+      product_name: products[randomIndexProduct].anme,
     }
 
+
+    // @ts-ignore
     addRelationSpecail(users[randomIndexUser]._id, products[randomIndexProduct].name)
       .then((res) => {
         console.log(res.data);
@@ -159,12 +164,12 @@ function App() {
           console.log("Traer todas las relaciones especiales: ", res.data);
           setUSpecialPrices(res.data);
         }).catch((err) => console.log(err));
-      
-      
+
+
 
       const randomIndexSpecialUsers = calculateRandom(specialPrices);
-      
 
+      // @ts-ignore
       deleteSpecialPriceUser(specialPrices[randomIndexSpecialUsers]._id)
         .then((res) => {
           console.log(res);
@@ -181,7 +186,7 @@ function App() {
   return (
     <>
       <h1>PAGO FIABLE Documentation API</h1>
-      <Methods/>
+      <Methods />
       <h2>Try it now!</h2>
 
       <div className="input-group mb-3">
