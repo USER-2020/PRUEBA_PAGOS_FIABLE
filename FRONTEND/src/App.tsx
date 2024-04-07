@@ -109,7 +109,7 @@ function App() {
       // @ts-ignore
       user_id: users[randomIndexUser]._id,
       // @ts-ignore
-      product_name: products[randomIndexProduct].anme,
+      product_name: products[randomIndexProduct].name,
     }
 
 
