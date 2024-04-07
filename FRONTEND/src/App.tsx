@@ -35,7 +35,8 @@ function App() {
           name: `Product ${Math.ceil(Math.random() * 30)}`
         }
 
-        const isDuplicate = exisitngProducts.some((productExist: { name: string }) => productExist.name === newProduct.name);
+        // @ts-ignore
+        const isDuplicate = exisitngProducts.some(productExist => productExist.name === newProduct.name);
 
 
         if (!isDuplicate) {
@@ -61,7 +62,8 @@ function App() {
           name: `User_${Math.ceil(Math.random() * 30)}`
         }
 
-        const isDuplicate = existingUser.some((userExist: { name: string }) => userExist.name === newUser.name);
+        // @ts-ignore
+        const isDuplicate = existingUser.some(userExist => userExist.name === newUser.name);
 
         if (!isDuplicate) {
           addUsers(newUser).then((res) => {
@@ -75,7 +77,8 @@ function App() {
       }).catch((error) => console.log(error));
   }
 
-  function calculateRandom(object: Record<string, any>) {
+  // @ts-ignore
+  function calculateRandom(object) {
     // Obtener la longitud del objeto `users`
     const length = Object.keys(object).length;
 
